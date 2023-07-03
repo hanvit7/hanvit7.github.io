@@ -1,6 +1,6 @@
 <html>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<head>헌릉로8길 22
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>주소 검색 페이지</title>
 </head>
@@ -22,28 +22,18 @@
 
 </style>
 <body>
-<h1 id="header"></h1>
+<h1 id="header">헌릉로8길 22</h1>
 <div id="full-size">
 </div>
 </body>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
-    var element = document.getElementById("header");
-    element.innerText = "1";
-    document.write(element.innerText);
-
     const element_layer = document.getElementById('full-size');
 
     daum.postcode.load(function () {
-        element.innerText = "2";
-        document.write(element.innerText);
-
         new daum.Postcode({
             oncomplete: function (data) {
-                element.innerText = "3";
-                document.write(element.innerText);
-
-                WebView.postMessage(data);
+                WebView.postMessage(JSON.stringify(data));
             },
             width: '100%',
             height: '100%',
